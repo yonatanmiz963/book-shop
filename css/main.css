@@ -1,0 +1,326 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    background-color: rgb(190, 190, 190);
+    font-family: 'Gentium Book Basic', serif;
+}
+
+.table-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    padding: 30px;
+    background-color: rgb(201, 246, 239);
+}
+
+.title {
+    text-align: center;
+    padding: 20px;
+}
+
+.add-book {
+    background-color: lightgray;
+    align-self: center;
+    margin-bottom: 20px;
+    font-weight: bolder;
+    font-size: 18px;
+    background-color: transparent;
+    transition: 0.3s;
+}
+
+.add-book:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.modal {
+    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: 0.5s;
+    position: absolute;
+    opacity: 1;
+    text-align: center;
+    flex-wrap: wrap;
+    width: 75%;
+    height: 100%;
+    background-color: rgb(190, 190, 190);
+    border: 1px solid rgb(134, 134, 134);
+    border-radius: 10px;
+    right: 0px;
+}
+
+.modal h5 {
+    margin: 20px;
+    background-color: transparent;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.modal h6 {
+    margin: 10px;
+    font-size: 18px;
+    background-color: transparent;
+    align-self: center;
+}
+
+.bodydesc {
+    width: 80%;
+    height: 30%;
+    margin: 10px;
+    padding: 70px;
+    background-color: rgb(255, 255, 255);
+    border: 0.1px solid black;
+}
+
+.bodydesc p {
+    background-color: rgb(255, 255, 255);
+}
+
+.modal img {
+    width: 10%;
+    height: auto;
+    border: 0.1px solid black;
+    align-self: center;
+}
+
+.user-input {
+    overflow: hidden;
+    left: 5%;
+    top: 0px;
+    opacity: 1;
+    transition: 0.5s;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 200px;
+    width: 400px;
+    border: 1px solid rgb(134, 134, 134);
+    border-radius: 10px;
+    background-color: rgb(190, 190, 190);
+}
+
+.user-input .submit {
+    margin-top: 5px;
+    transition-duration: 0.4s;
+    padding: 10px;
+    outline: none;
+    border: 0;
+    background-color: rgb(196, 244, 250);
+    border-radius: 10px;
+}
+
+.user-input .submit:hover {
+    cursor: pointer;
+    background-color: #65d2e0;
+}
+
+.user-input .close {
+    margin-top: 5px;
+    transition-duration: 0.4s;
+    padding: 10px;
+    outline: none;
+    border: 0;
+    background-color: rgb(196, 244, 250);
+    border-radius: 10px;
+}
+
+.user-input .close:hover {
+    cursor: pointer;
+    background-color: #65d2e0;
+}
+
+.user-input .name {
+    width: 200px;
+    transition-duration: 0.4s;
+    padding: 10px;
+    outline: none;
+    border: 0;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.user-input .price {
+    width: 200px;
+    margin-top: 10px;
+    transition-duration: 0.4s;
+    padding: 10px;
+    outline: none;
+    border: 0;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+}
+
+.close {
+    margin-top: 10px;
+}
+
+.submit {
+    margin-top: 20px;
+}
+
+form {
+    display: flex;
+    align-items: center;
+}
+
+.update {
+    overflow: hidden;
+    left: 5%;
+    top: 0px;
+    opacity: 1;
+    transition: 0.5s;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 400px;
+    border: 1px solid rgb(134, 134, 134);
+    border-radius: 10px;
+    background-color: rgb(190, 190, 190);
+}
+
+.hide {
+    height: 0;
+    width: 0;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.pages {
+    align-self: center;
+    margin-top: 20px;
+    background-color: transparent;
+    text-align: center;
+}
+
+.pages input {
+    transition-duration: 0.4s;
+    padding: 10px;
+    outline: none;
+    border: 0;
+    border-radius: 10px;
+    background-color: rgb(201, 246, 239);
+}
+
+.pages input:hover {
+    cursor: pointer;
+    background-color: #2a6dff;
+}
+
+.rate {
+    background-color: transparent;
+    font-weight: bold;
+}
+
+.rate-container input {
+    margin: 0 10px;
+    transition-duration: 0.4s;
+    padding: 10px;
+    outline: none;
+    border: 0;
+    background-color: rgb(201, 246, 239);
+    border-radius: 10px;
+}
+
+.rate-container input:hover {
+    background-color: #2a6dff;
+    cursor: pointer;
+}
+
+.close-modal:hover {
+    background-color: #2a6dff;
+    cursor: pointer;
+}
+
+.close-modal {
+    width: 15%;
+    align-self: center;
+}
+
+.books-table {
+    -webkit-box-shadow: 0px 2px 14px 2px rgba(0, 0, 0, 0.55);
+    box-shadow: 0px 2px 14px 2px rgba(0, 0, 0, 0.55);
+    border-radius: 20px;
+    height: 80%;
+    width: 80%;
+}
+
+.books-table td,
+th {
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    width: 10%;
+    text-align: center;
+}
+
+button {
+    transition-duration: 0.4s;
+    padding: 10px;
+    outline: none;
+    border: 0;
+    border-radius: 10px;
+    background-color: rgb(201, 246, 239);
+}
+
+.read-button:hover {
+    background-color: #6dbe70;
+    cursor: pointer;
+}
+
+.update-button:hover {
+    background-color: #0967fd;
+    cursor: pointer;
+}
+
+.remove-button:hover {
+    background-color: #df3e3e;
+    cursor: pointer;
+}
+
+.update .submit {
+    transition-duration: 0.4s;
+    padding: 10px;
+    outline: none;
+    border: 0;
+    background-color: rgb(196, 244, 250);
+    border-radius: 10px;
+}
+
+.update .submit:hover {
+    background-color: #65d2e0;
+    cursor: pointer;
+}
+
+.update .close:hover {
+    background-color: #65d2e0;
+    cursor: pointer;
+}
+
+.update .close {
+    transition-duration: 0.4s;
+    padding: 10px;
+    outline: none;
+    border: 0;
+    background-color: rgb(196, 244, 250);
+    border-radius: 10px;
+}
+
+.update .updated-price {
+    transition-duration: 0.4s;
+    padding: 10px;
+    outline: none;
+    border: 0;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+}

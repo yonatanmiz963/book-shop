@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Shop</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Gentium+Book+Basic&display=swap" rel="stylesheet">
+</head>
+
+<body onload="onInit()">
+
+    <!-- <div class="main-container"> -->
+
+    <form class="user-input hide" onsubmit="onAddBook(event)">
+        <input type="text" placeholder="Book Name" class="name">
+        <input type="text" placeholder="Price" class="price">
+        <input type="submit" value="Add Book" class="submit">
+        <input type="button" onclick="onCloseAddBook()" value="Close" class="close">
+    </form>
+
+    <form class="update hide" onsubmit="onUpdateBook(event)">
+        <input type="text" placeholder="New Price" class="updated-price">
+        <input type="submit" value="Update Price" class="submit">
+        <input type="button" onclick="onCloseUpdateBook()" value="Close" class="close">
+    </form>
+
+    <div class="modal hide">
+        <h5></h5>
+        <h6></h6>
+        <div class="bodydesc" style="margin-left:auto; margin-right:auto; overflow-y: scroll;">
+            <p></p>
+        </div>
+        <img src="">
+        <h4>Rate this book</h4>
+        <div class="rate-container">
+            <input type="button" value="-" class="moins" onclick="onMinus()">
+            <label class="rate">0</label>
+            <input type="button" value="+" class="plus" onclick="onPlus()">
+        </div>
+
+        <button class="close-modal" onclick="onCloseModal()">Close</button>
+
+    </div>
+
+    <h1 class="title">Welcome to my bookshop</h1>
+
+
+
+    <div class="table-container">
+        <a class="add-book" onclick="onOpenAddBook()">Create new book</a>
+
+        <table class="books-table">
+        </table>
+
+    </div>
+
+    <div class="pages">
+        <input type="button" value="<<" onclick="onSetPage('prev')">
+        <input type="button" value="1" onclick="onSetPage(0)">
+        <input type="button" value="2" onclick="onSetPage(1)">
+        <input type="button" value="3" onclick="onSetPage(2)">
+        <input type="button" value=">>" onclick="onSetPage('next')">
+    </div>
+
+    <!-- </div> -->
+
+
+    <script src="js/util-service.js"></script>
+    <script src="js/storage-service.js"></script>
+    <script src="js/book-service.js"></script>
+    <script src="js/book-controller.js"></script>
+</body>
+
+</html>
