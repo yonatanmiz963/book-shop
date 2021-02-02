@@ -3,13 +3,15 @@
 const KEY = 'books';
 var gBooks;
 var gBookNames = ['Narnia', 'Harry Potter', 'The Lord Of The Rings', 'The Hunger Games'];
-
+var gSortBy;
 
 const  PAGE_SIZE  =  10;
 var  gPageIdx  =  0;
 
 
-function sortBooks() {
+function sortBooks(sort) {
+    gSortBy = sort;
+
     switch (gSortBy) {
         case 'price':
             gBooks.sort(function(book1, book2) {

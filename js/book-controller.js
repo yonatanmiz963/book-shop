@@ -2,28 +2,27 @@
 
 
 var gCurrBook;
-var gSortBy;
+
 var gCurrBookId;
 
 
 function onInit() {
     createBooks();
-    doTrans();
     renderBooks();
-
 }
 
 
 function sortBy(sort, ev) {
     ev.stopPropagation();
-    gSortBy = sort;
-    sortBooks();
+    sortBooks(sort);
     renderBooks();
+    // gSortBy = sort;
 }
 
 
 function renderBooks() {
     var books = getBooks()
+
     var tableHeadHTML = `<th class="titles bg-light text-dark">${getTrans('id')}</th>
     <th class="titles bg-light text-dark" data-trans="book-title"  onclick="sortBy('bookName', event)">${getTrans('book-title')}</th>
     <th class="titles bg-light text-dark" data-trans="price" onclick="sortBy('price', event)">${getTrans('price')}</th>
@@ -56,7 +55,6 @@ function onRemoveBook(bookId) {
 function onOpenAddBook() {
     var elAddBook = document.querySelector('.user-input');
     elAddBook.classList.remove('hide');
-    // elAddBook.style.display = 'flex';
 }
 
 
@@ -133,22 +131,15 @@ function onCloseModal() {
 }
 
 
-function onPlus() {
-    if (gCurrBook.rate >= 10) return;
-    gCurrBook.rate++;
+function onRate(diff) {
+    if (diff === '+' && gCurrBook.rate >= 10 || diff === '-' && gCurrBook.rate <= 0) return;
+    var newRate = (diff === '+') ? 1 : -1;
+    gCurrBook.rate += newRate;
     var elRate = document.querySelector('.rate');
     elRate.innerText = ` ${gCurrBook.rate} `;
     _saveBooksToStorage();
 }
 
-
-function onMinus() {
-    if (gCurrBook.rate <= 0) return;
-    gCurrBook.rate--;
-    var elRate = document.querySelector('.rate');
-    elRate.innerText = ` ${gCurrBook.rate} `;
-    _saveBooksToStorage();
-}
 
 
 function onSetPage(page) {
