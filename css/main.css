@@ -36,38 +36,6 @@
     transform: scale(1.1);
 }
 
-.modal {
-    justify-content: space-around;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    transition: 0.5s;
-    position: absolute;
-    opacity: 1;
-    text-align: center;
-    flex-wrap: wrap;
-    width: 75%;
-    height: 100%;
-    background-color: rgb(190, 190, 190);
-    border: 1px solid rgb(134, 134, 134);
-    border-radius: 10px;
-    right: 0px;
-}
-
-.modal h5 {
-    margin: 20px;
-    background-color: transparent;
-    font-size: 26px;
-    font-weight: bold;
-}
-
-.modal h6 {
-    margin: 10px;
-    font-size: 18px;
-    background-color: transparent;
-    align-self: center;
-}
-
 .bodydesc {
     width: 80%;
     height: 30%;
@@ -81,7 +49,7 @@
     background-color: rgb(255, 255, 255);
 }
 
-.modal img {
+.book-modal img {
     width: 10%;
     height: auto;
     border: 0.1px solid black;
@@ -98,7 +66,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 200px;
+    height: 230px;
     width: 400px;
     border: 1px solid rgb(134, 134, 134);
     border-radius: 10px;
@@ -120,7 +88,7 @@
     background-color: #65d2e0;
 }
 
-.user-input .close {
+.user-input .close-new {
     margin-top: 5px;
     transition-duration: 0.4s;
     padding: 10px;
@@ -130,7 +98,7 @@
     border-radius: 10px;
 }
 
-.user-input .close:hover {
+.user-input .close-new:hover {
     cursor: pointer;
     background-color: #65d2e0;
 }
@@ -157,7 +125,11 @@
     border-radius: 10px;
 }
 
-.close {
+.close-new {
+    margin-top: 10px;
+}
+
+.close-update {
     margin-top: 10px;
 }
 
@@ -188,18 +160,12 @@ form {
     background-color: rgb(190, 190, 190);
 }
 
-.hide {
-    height: 0;
-    width: 0;
-    opacity: 0;
-    transition: 0.5s;
-}
-
 .pages {
     align-self: center;
-    margin-top: 20px;
     background-color: transparent;
     text-align: center;
+    padding: 10px;
+    /* margin-top: 20px; */
 }
 
 .pages input {
@@ -247,8 +213,6 @@ form {
 }
 
 .books-table {
-    -webkit-box-shadow: 0px 2px 14px 2px rgba(0, 0, 0, 0.55);
-    box-shadow: 0px 2px 14px 2px rgba(0, 0, 0, 0.55);
     border-radius: 20px;
     height: 80%;
     width: 80%;
@@ -256,7 +220,7 @@ form {
 
 .books-table td,
 th {
-    border-radius: 20px;
+    /* border-radius: 20px; */
     padding: 10px;
     font-size: 16px;
     font-weight: bold;
@@ -302,12 +266,12 @@ button {
     cursor: pointer;
 }
 
-.update .close:hover {
+.update .close-update:hover {
     background-color: #65d2e0;
     cursor: pointer;
 }
 
-.update .close {
+.update .close-update {
     transition-duration: 0.4s;
     padding: 10px;
     outline: none;
@@ -323,4 +287,61 @@ button {
     border: 0;
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
+}
+
+.lang {
+    margin-bottom: 5px;
+    border-radius: 5px;
+    width: 100px;
+    outline: none;
+}
+
+body.rtl {
+    direction: rtl;
+}
+
+.book-modal.rtl {
+    right: 0px;
+}
+
+.book-modal {
+    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: 0.5s;
+    position: absolute;
+    opacity: 1;
+    text-align: center;
+    flex-wrap: wrap;
+    width: 75%;
+    height: 100%;
+    background-color: rgb(190, 190, 190);
+    border: 1px solid rgb(134, 134, 134);
+    border-radius: 10px;
+    left: 0px;
+}
+
+.book-modal h5 {
+    margin: 20px;
+    background-color: transparent;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.book-modal h6 {
+    margin: 10px;
+    font-size: 18px;
+    background-color: transparent;
+    align-self: center;
+}
+
+.hide {
+    height: 0;
+    width: 0;
+    opacity: 0;
+}
+
+.titles {
+    text-align: center;
 }

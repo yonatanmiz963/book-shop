@@ -8,6 +8,7 @@ var gCurrBookId;
 
 function onInit() {
     createBooks();
+    doTrans();
     renderBooks();
 
 }
@@ -23,22 +24,22 @@ function sortBy(sort, ev) {
 
 function renderBooks() {
     var books = getBooks()
-    var tableHeadHTML = `<th>ID</th>
-    <th onclick="sortBy('bookName', event)">Title</th>
-    <th onclick="sortBy('price', event)">Price</th>
-    <th>Rating</th>
-    <th colspan="3">Actions</th>`;
+    var tableHeadHTML = `<th class="titles bg-light text-dark">${getTrans('id')}</th>
+    <th class="titles bg-light text-dark" data-trans="book-title"  onclick="sortBy('bookName', event)">${getTrans('book-title')}</th>
+    <th class="titles bg-light text-dark" data-trans="price" onclick="sortBy('price', event)">${getTrans('price')}</th>
+    <th class="titles bg-light text-dark" data-trans="rating">${getTrans('rating')}</th>
+    <th class="titles bg-light text-dark" data-trans="actions" colspan="3">${getTrans('actions')}</th>`;
 
     var strHtmls = books.map(function(book) {
         return `
         <tr>
-        <td>${book.id}</td>
-        <td>${book.bookName}</td>
-        <td>${book.price.toFixed(2)}</td>
-        <td>${book.rate}</td>
-        <td><button class="read-button" onclick="onReadBook('${book.id}')">Read</button></td>
-        <td><button class="update-button" onclick="onOpenUpdateBook('${book.id}')">Update</button></td>
-        <td><button class="remove-button" onclick="onRemoveBook('${book.id}')">Delete</button></td>
+        <td class="bg-light text-dark">${book.id}</td>
+        <td class="bg-light text-dark">${book.bookName}</td>
+        <td class="bg-light text-dark">${formatCurrency(book.price)}</td>
+        <td class="bg-light text-dark">${book.rate}</td>
+        <td class="bg-light text-dark"><button data-trans="read" class="read-button" onclick="onReadBook('${book.id}')">${getTrans('read')}</button></td>
+        <td class="bg-light text-dark"><button data-trans="update-book" class="update-button" onclick="onOpenUpdateBook('${book.id}')">${getTrans('update-book')}</button></td>
+        <td class="bg-light text-dark"><button data-trans="remove" class="remove-button" onclick="onRemoveBook('${book.id}')">${getTrans('remove')}</button></td>
         </tr>`
     }).join('');
 
@@ -114,17 +115,18 @@ function onReadBook(bookId) {
     var elRate = document.querySelector('.rate');
     elRate.innerText = ` ${book.rate} `;
 
-    var elModal = document.querySelector('.modal')
+    var elModal = document.querySelector('.book-modal')
     elModal.classList.remove('hide');
     elModal.querySelector('h5').innerText = book.bookName
-    elModal.querySelector('h6').innerText = book.price.toFixed(2);
+    elModal.querySelector('h6').innerText = formatCurrency(book.price);
     elModal.querySelector('p').innerText = book.desc
     elModal.querySelector('img').src = book.img;
 }
 
 
 function onCloseModal() {
-    var elModal = document.querySelector('.modal')
+    var elModal = document.querySelector('.book-modal');
+    console.log(elModal);
     elModal.classList.add('hide');
     gCurrBook = null;
     renderBooks();
@@ -155,5 +157,20 @@ function onSetPage(page) {
     if (page === 'next') ++gPageIdx;
     if (typeof(page) === 'number') gPageIdx = page;
     getBooks();
+    renderBooks();
+}
+
+
+
+function onSetLang(lang) {
+    setLang(lang);
+    if (lang === 'he') {
+        document.body.classList.add('rtl');
+        document.querySelector('.book-modal').classList.add('rtl');
+    } else {
+        document.body.classList.remove('rtl');
+        document.querySelector('.book-modal').classList.remove('rtl');
+    }
+    doTrans();
     renderBooks();
 }
